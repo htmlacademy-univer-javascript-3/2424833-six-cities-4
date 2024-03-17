@@ -4,10 +4,11 @@ import Card from './card.tsx';
 import CardInfo from '../../common/card-info.ts';
 
 function CreateCards (cards: CardInfo[]) {
-  // suppose card'll have some id
+  // TODO(cockamamie): suppose card'll have some id
   return (
     <React.Fragment>
       {cards.map((card, index) =>
+        // eslint-disable-next-line react/no-array-index-key
         <Card key={index} cardInfo={card} />)}
     </React.Fragment>);
 }
