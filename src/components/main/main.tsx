@@ -1,10 +1,9 @@
 import React, {JSX} from 'react';
-import Header from '../header/header.tsx';
 import Card from './card.tsx';
 import CardInfo from '../../common/card-info.ts';
 
 function CreateCards (cards: CardInfo[]) {
-  // TODO(cockamamie): suppose card'll have some id
+  // TODO: suppose card'll have some id
   return (
     <React.Fragment>
       {cards.map((card, index) =>
@@ -13,10 +12,11 @@ function CreateCards (cards: CardInfo[]) {
     </React.Fragment>);
 }
 
+// TODO: fix main page scroll
+// TODO: fix slash between price and period
 export default function Main(props: {cards: CardInfo[]}): JSX.Element {
   return (
     <div className="page page--gray page--main">
-      <Header />
       <main className="page__main page__main--index">
         <h1 className="visually-hidden">Cities</h1>
         <div className="tabs">

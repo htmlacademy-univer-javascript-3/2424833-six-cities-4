@@ -1,14 +1,12 @@
 import {JSX} from 'react';
-import Header from '../header/header.tsx';
-import HeaderUnauthorized from '../header/header-unauthorized.tsx';
 import OfferReviewForm from './offer-review-form.tsx';
+//import {useParams} from "react-router-dom";
 
 export default function Offer(props : {isAuthorized: boolean}): JSX.Element {
-  //should have sth like that for each page
-  const header = props.isAuthorized ? <Header /> : <HeaderUnauthorized />;
+  //const params = useParams();
+
   return (
     <div className="page">
-      {header}
       <main className="page__main page__main--offer">
         <section className="offer">
           <div className="offer__gallery-container container">
@@ -317,7 +315,6 @@ export default function Offer(props : {isAuthorized: boolean}): JSX.Element {
           </section>
         </div>
       </main>
-
     </div>
   );
 }
