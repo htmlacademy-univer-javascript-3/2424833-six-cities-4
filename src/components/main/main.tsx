@@ -1,16 +1,6 @@
-import React, {JSX} from 'react';
-import Card from './card.tsx';
-import CardInfo from '../../common/card-info.ts';
-
-function CreateCards (cards: CardInfo[]) {
-  // TODO: suppose card'll have some id
-  return (
-    <React.Fragment>
-      {cards.map((card, index) =>
-        // eslint-disable-next-line react/no-array-index-key
-        <Card key={index} cardInfo={card} />)}
-    </React.Fragment>);
-}
+import {JSX} from 'react';
+import CardInfo from '../../types/card-info.ts';
+import CardsList from './cards-list.tsx';
 
 // TODO: fix main page scroll
 // TODO: fix slash between price and period
@@ -75,9 +65,7 @@ export default function Main(props: {cards: CardInfo[]}): JSX.Element {
                   <li className="places__option" tabIndex={0}>Top rated first</li>
                 </ul>
               </form>
-              <div className="cities__places-list places__list tabs__content">
-                {CreateCards(props.cards)}
-              </div>
+              <CardsList cards={props.cards} />
             </section>
             <div className="cities__right-section">
               <section className="cities__map map"/>
