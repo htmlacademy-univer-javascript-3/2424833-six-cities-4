@@ -1,9 +1,10 @@
 import {JSX} from 'react';
+import {Link} from 'react-router-dom';
 
 export default function FavoritesFooter(): JSX.Element {
   return (
     <footer className="footer">
-      <a className="footer__logo-link" href="main.html">
+      <Link className="footer__logo-link" to={'/'}>
         <img
           className="footer__logo"
           src="img/logo.svg"
@@ -11,7 +12,7 @@ export default function FavoritesFooter(): JSX.Element {
           width={64}
           height={33}
         />
-      </a>
+      </Link>
     </footer>
   );
 }
