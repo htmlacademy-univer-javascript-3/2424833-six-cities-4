@@ -5,8 +5,10 @@ import FavoritesCard from './favorites-card.tsx';
 export default function FavoritesListItem(props: {locationName: string; cards: CardInfo[]}): JSX.Element {
   const createCards = () => (
     <>
-      {props.cards.map((card) =>
-        <FavoritesCard key={card.id} cardInfo={card} />)}
+      {props.cards
+        .filter((card) => card.isFavorite)
+        .map((card) =>
+          <FavoritesCard key={card.id} cardInfo={card}/>)}
     </>
   );
 

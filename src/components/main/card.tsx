@@ -7,7 +7,7 @@ import {Link} from 'react-router-dom';
 export default function Card({cardInfo}: {cardInfo: CardInfo}): JSX.Element {
   return (
     <article className="cities__card place-card">
-      <PremiumMark isPremium={cardInfo.isPremium} />
+      {cardInfo.isPremium && <PremiumMark />}
       <div className="cities__image-wrapper place-card__image-wrapper">
         <Link to={`offer/${cardInfo.id}`}>
           <img

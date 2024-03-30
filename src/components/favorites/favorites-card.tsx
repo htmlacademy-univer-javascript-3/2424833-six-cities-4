@@ -5,16 +5,9 @@ import PremiumMark from '../cards-common/premium-mark.tsx';
 import {Link} from 'react-router-dom';
 
 export default function FavoritesCard({cardInfo}: {cardInfo: CardInfo}): JSX.Element {
-  if (!cardInfo.isFavorite) {
-    return (
-      <>
-      </>
-    );
-  }
-
   return (
     <article className="favorites__card place-card">
-      <PremiumMark isPremium={cardInfo.isPremium} />
+      {cardInfo.isPremium && <PremiumMark />}
       <div className="favorites__image-wrapper place-card__image-wrapper">
         <Link to={`offer/${cardInfo.id}`}>
           <img

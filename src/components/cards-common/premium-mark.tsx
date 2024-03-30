@@ -1,13 +1,6 @@
 import {JSX} from 'react';
 
-export default function PremiumMark({isPremium}: {isPremium: boolean}): JSX.Element {
-  if (!isPremium) {
-    return (
-      <>
-      </>
-    );
-  }
-
+export default function PremiumMark(): JSX.Element {
   return (
     <div className="place-card__mark">
       <span>Premium</span>

@@ -5,7 +5,7 @@ export default function HeaderLogo(): JSX.Element {
   return (
     <div className="header__left">
       {/* TODO header__logo-link--active?*/}
-      <Link className="header__logo-link" to={'/'}>
+      <Link className="header__logo-link" to='/'>
         <img
           className="header__logo"
           src="img/logo.svg"
