@@ -2,7 +2,7 @@ import {JSX} from 'react';
 import OfferReviewForm from './offer-review-form.tsx';
 //import {useParams} from "react-router-dom";
 
-export default function Offer(props : {isAuthorized: boolean}): JSX.Element {
+export default function OfferPage(props : {isAuthorized: boolean}): JSX.Element {
   //const params = useParams();
 
   return (
@@ -54,6 +54,7 @@ export default function Offer(props : {isAuthorized: boolean}): JSX.Element {
           <div className="offer__container container">
             <div className="offer__wrapper">
               <div className="offer__mark">
+                {/*TODO: conditional*/}
                 <span>Premium</span>
               </div>
               <div className="offer__name-wrapper">

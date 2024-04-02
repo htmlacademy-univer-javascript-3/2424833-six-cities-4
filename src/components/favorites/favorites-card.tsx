@@ -4,22 +4,22 @@ import PlaceCardInfoChildren from '../cards-common/place-card-info-children.tsx'
 import PremiumMark from '../cards-common/premium-mark.tsx';
 import {Link} from 'react-router-dom';
 
-export default function Card({cardInfo}: {cardInfo: CardInfo}): JSX.Element {
+export default function FavoritesCard({cardInfo}: {cardInfo: CardInfo}): JSX.Element {
   return (
-    <article className="cities__card place-card">
+    <article className="favorites__card place-card">
       {cardInfo.isPremium && <PremiumMark />}
-      <div className="cities__image-wrapper place-card__image-wrapper">
+      <div className="favorites__image-wrapper place-card__image-wrapper">
         <Link to={`offer/${cardInfo.id}`}>
           <img
             className="place-card__image"
             src={cardInfo.previewImage}
-            width={260}
-            height={200}
+            width={150}
+            height={110}
             alt="Place image"
           />
         </Link>
       </div>
-      <div className="place-card__info">
+      <div className="favorites__card-info place-card__info">
         <PlaceCardInfoChildren cardInfo={cardInfo} />
       </div>
     </article>
