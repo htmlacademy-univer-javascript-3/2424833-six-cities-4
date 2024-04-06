@@ -1,10 +1,21 @@
-import {JSX} from 'react';
+import {JSX, useState} from 'react';
 import CardInfo from '../../types/card-info.ts';
 import CardsList from './cards-list.tsx';
+import Map from './map.tsx';
+import Location from '../../types/location.ts';
 
 // TODO: fix main page scroll
 // TODO: fix slash between price and period
 export default function Main(props: {cards: CardInfo[]}): JSX.Element {
+  const [selectedPoint, setSelectedPoint] = useState<Location | undefined>(undefined);
+  const points = props.cards.map((card) => card.location);
+  const handleListItemHover = (listPoint: Location) => {
+    const currentPoint = points.find((point) =>
+      point.latitude === listPoint.latitude && point.longitude === listPoint.longitude);
+
+    setSelectedPoint(currentPoint);
+  };
+
   return (
     <div className="page page--gray page--main">
       <main className="page__main page__main--index">
@@ -65,10 +76,10 @@ export default function Main(props: {cards: CardInfo[]}): JSX.Element {
                   <li className="places__option" tabIndex={0}>Top rated first</li>
                 </ul>
               </form>
-              <CardsList cards={props.cards} />
+              <CardsList cards={props.cards} onListItemHover={handleListItemHover}/>
             </section>
             <div className="cities__right-section">
-              <section className="cities__map map"/>
+              <Map city={props.cards[0].city} points={points} selectedPoint={selectedPoint} />
             </div>
           </div>
         </div>
