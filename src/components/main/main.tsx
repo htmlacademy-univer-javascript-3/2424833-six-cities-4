@@ -76,10 +76,19 @@ export default function Main(props: {cards: CardInfo[]}): JSX.Element {
                   <li className="places__option" tabIndex={0}>Top rated first</li>
                 </ul>
               </form>
-              <CardsList cards={props.cards} onListItemHover={handleListItemHover}/>
+              <CardsList
+                cards={props.cards}
+                onListItemHover={handleListItemHover}
+                listClassNames={'cities__places-list places__list tabs__content'}
+              />
             </section>
             <div className="cities__right-section">
-              <Map city={props.cards[0].city} points={points} selectedPoint={selectedPoint} />
+              <Map
+                city={props.cards[0].city}
+                points={points}
+                selectedPoint={selectedPoint}
+                mapClass={'cities__map map'}
+              />
             </div>
           </div>
         </div>

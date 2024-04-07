@@ -7,20 +7,21 @@ import Location from '../../types/location.ts';
 type Props = {
   cards: CardInfo[];
   onListItemHover: (listPoint: Location) => void;
+  listClassNames: string;
 }
 
-export default function CardsList({cards, onListItemHover}: Props): JSX.Element {
+export default function CardsList({cards, onListItemHover, listClassNames}: Props): JSX.Element {
   const createCards = () => (
     <>
       {cards.map((card) =>
-        <Card key={card.id} card={card} onListItemHover={onListItemHover}/>)}
+        <Card key={card.id} card={card} onListItemHover={onListItemHover} classPrefix={'cities'}/>)}
     </>
   );
 
   //const [activeCardId, setActiveCardId] = useState('');
 
   return (
-    <div className="cities__places-list places__list tabs__content">
+    <div className={listClassNames}>
       {createCards()}
     </div>
   );
