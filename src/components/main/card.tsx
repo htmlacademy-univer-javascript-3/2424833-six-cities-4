@@ -1,18 +1,29 @@
-import {JSX} from 'react';
+import {JSX, MouseEvent} from 'react';
 import CardInfo from '../../types/card-info.ts';
 import PlaceCardInfoChildren from '../cards-common/place-card-info-children.tsx';
 import PremiumMark from '../cards-common/premium-mark.tsx';
 import {Link} from 'react-router-dom';
+import Location from '../../types/location.ts';
 
-export default function Card({cardInfo}: {cardInfo: CardInfo}): JSX.Element {
+type Props = {
+  card: CardInfo;
+  onListItemHover: (listPoint: Location) => void;
+}
+
+export default function Card({card, onListItemHover}: Props): JSX.Element {
+  const handleListItemHover = (event: MouseEvent<HTMLLIElement>) => {
+    event.preventDefault();
+    onListItemHover(card.location);
+  };
+
   return (
-    <article className="cities__card place-card">
-      {cardInfo.isPremium && <PremiumMark />}
+    <article className="cities__card place-card" onMouseEnter={handleListItemHover}>
+      {card.isPremium && <PremiumMark />}
       <div className="cities__image-wrapper place-card__image-wrapper">
-        <Link to={`offer/${cardInfo.id}`}>
+        <Link to={`offer/${card.id}`}>
           <img
             className="place-card__image"
-            src={cardInfo.previewImage}
+            src={card.previewImage}
             width={260}
             height={200}
             alt="Place image"
@@ -20,7 +31,7 @@ export default function Card({cardInfo}: {cardInfo: CardInfo}): JSX.Element {
         </Link>
       </div>
       <div className="place-card__info">
-        <PlaceCardInfoChildren cardInfo={cardInfo} />
+        <PlaceCardInfoChildren cardInfo={card} />
       </div>
     </article>
   );

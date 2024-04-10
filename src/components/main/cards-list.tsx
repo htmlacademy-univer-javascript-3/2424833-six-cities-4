@@ -2,12 +2,18 @@
 import {JSX} from 'react';
 import CardInfo from '../../types/card-info.ts';
 import Card from './card.tsx';
+import Location from '../../types/location.ts';
 
-export default function CardsList({cards}: {cards: CardInfo[]}): JSX.Element {
+type Props = {
+  cards: CardInfo[];
+  onListItemHover: (listPoint: Location) => void;
+}
+
+export default function CardsList({cards, onListItemHover}: Props): JSX.Element {
   const createCards = () => (
     <>
       {cards.map((card) =>
-        <Card key={card.id} cardInfo={card} />)}
+        <Card key={card.id} card={card} onListItemHover={onListItemHover}/>)}
     </>
   );
 
