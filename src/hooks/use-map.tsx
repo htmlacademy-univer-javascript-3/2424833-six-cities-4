@@ -29,7 +29,7 @@ export default function useMap(
       setMap(instance);
       isRenderedRef.current = true;
     }
-  }, [mapRef, city]);
+  }, [mapRef, city, location.latitude, location.longitude, location.zoom]);
 
   return map;
 }

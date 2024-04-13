@@ -1,14 +1,12 @@
 import CardInfo from '../types/card-info.ts';
-import PlaceType from '../types/place-type.ts';
-import RatingStars from '../types/rating.ts';
 
 export const offers: CardInfo[] = [
   {
     id: '1',
     title: 'Beautiful & luxurious apartment at great location',
     price: 120,
-    type: PlaceType.Apartment,
-    rating: RatingStars.Four,
+    type: 'apartment',
+    rating: 4,
     isFavorite: false,
     isPremium: true,
     city: {
@@ -29,8 +27,8 @@ export const offers: CardInfo[] = [
     id: '2',
     title: 'Wood and stone place',
     price: 80,
-    type: PlaceType.Room,
-    rating: RatingStars.Four,
+    type: 'room',
+    rating: 4,
     isFavorite: true,
     isPremium: false,
     city: {
@@ -51,8 +49,8 @@ export const offers: CardInfo[] = [
     id: '3',
     title: 'Canal View Prinsengracht',
     price: 132,
-    type: PlaceType.Apartment,
-    rating: RatingStars.Four,
+    type: 'apartment',
+    rating: 4,
     isFavorite: false,
     isPremium: false,
     city: {
@@ -73,8 +71,8 @@ export const offers: CardInfo[] = [
     id: '4',
     title: 'Nice, cozy, warm big bed apartment',
     price: 180,
-    type: PlaceType.Apartment,
-    rating: RatingStars.Five,
+    type: 'apartment',
+    rating: 5,
     isFavorite: false,
     isPremium: true,
     city: {
@@ -95,8 +93,8 @@ export const offers: CardInfo[] = [
     id: '5',
     title: 'Wood and stone place',
     price: 80,
-    type: PlaceType.Room,
-    rating: RatingStars.Four,
+    type: 'room',
+    rating: 4,
     isFavorite: true,
     isPremium: false,
     city: {
@@ -112,5 +110,28 @@ export const offers: CardInfo[] = [
       zoom: 8
     },
     previewImage: 'img/room.jpg'
+  },
+  {
+    id: '1d6e2017-26fe-4fe5-ae29-689bb3a7c963',
+    title: 'The Pondhouse - A Magical Place',
+    type: 'hotel',
+    price: 209,
+    previewImage: 'https://14.design.htmlacademy.pro/static/hotel/14.jpg',
+    city: {
+      name: 'Paris',
+      location: {
+        latitude: 48.85661,
+        longitude: 2.351499,
+        zoom: 13
+      }
+    },
+    location: {
+      latitude: 48.868610000000004,
+      longitude: 2.342499,
+      zoom: 16
+    },
+    isFavorite: false,
+    isPremium: true,
+    rating: 4.9
   }
 ];

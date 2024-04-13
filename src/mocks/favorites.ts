@@ -1,14 +1,12 @@
 import CardInfo from '../types/card-info.ts';
-import PlaceType from '../types/place-type.ts';
-import RatingStars from '../types/rating.ts';
 
 export const favorites: CardInfo[] = [
   {
     id: '1',
     title: 'Nice, cozy, warm big bed apartment',
     price: 180,
-    type: PlaceType.Apartment,
-    rating: RatingStars.Five,
+    type: 'apartment',
+    rating: 5,
     isFavorite: true,
     isPremium: true,
     city: {
@@ -29,8 +27,8 @@ export const favorites: CardInfo[] = [
     id: '2',
     title: 'Wood and stone place',
     price: 80,
-    type: PlaceType.Room,
-    rating: RatingStars.Four,
+    type: 'room',
+    rating: 4,
     isFavorite: true,
     isPremium: false,
     city: {
@@ -51,8 +49,8 @@ export const favorites: CardInfo[] = [
     id: '3',
     title: 'White castle',
     price: 180,
-    type: PlaceType.Apartment,
-    rating: RatingStars.Five,
+    type: 'apartment',
+    rating: 5,
     isFavorite: true,
     isPremium: false,
     city: {
