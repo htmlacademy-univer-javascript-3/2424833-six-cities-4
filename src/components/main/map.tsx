@@ -51,11 +51,13 @@ function Map(props: MapProps): JSX.Element {
           .addTo(markerLayer);
       });
 
+      map.flyTo({lat: city.location.latitude, lng: city.location.longitude}, city.location.zoom);
+
       return () => {
         map.removeLayer(markerLayer);
       };
     }
-  }, [map, points, selectedPoint]);
+  }, [city.location.latitude, city.location.longitude, city.location.zoom, map, points, selectedPoint]);
 
   return <div className={props.mapClass} ref={mapRef}></div>;
 }

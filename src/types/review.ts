@@ -1,5 +1,3 @@
-import RatingStars from './rating.ts';
-
 type Review = {
   id: string;
   date: Date;
@@ -9,7 +7,7 @@ type Review = {
     isPro: false;
   };
   comment: string;
-  rating: RatingStars;
+  rating: number;
 }
 
 export default Review;
