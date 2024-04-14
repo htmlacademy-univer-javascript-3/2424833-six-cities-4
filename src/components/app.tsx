@@ -8,6 +8,7 @@ import NotFound from './not-found/not-found.tsx';
 import OfferPage from './offer/offer-page.tsx';
 import ProtectedRoute from './protected-route/protected-route.tsx';
 import Layout from './layout/layout.tsx';
+import {reviews} from '../mocks/reviews.ts';
 
 export default function App(props: {cards: CardInfo[]; favorites: CardInfo[]}): JSX.Element {
   return (
@@ -24,7 +25,16 @@ export default function App(props: {cards: CardInfo[]; favorites: CardInfo[]}): 
               </ProtectedRoute>
             }
           />
-          <Route path={'offer/:id'} element={<OfferPage isAuthorized />}/>
+          <Route
+            path={'offer/:id'}
+            element={
+              <OfferPage
+                reviews={reviews}
+                isAuthorized
+                offersNearby={props.cards.slice(0, 3)}
+              />
+            }
+          />
         </Route>
         <Route path={'*'} element={<NotFound />} />
         {/*вынес для лейаута*/}
