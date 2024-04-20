@@ -1,8 +1,10 @@
+import City from './types/city.ts';
+
 export const URL_MARKER_DEFAULT = 'img/pin.svg';
 
 export const URL_MARKER_CURRENT = 'img/pin-active.svg';
 
-export const cities = [
+export const cities: City[] = [
   {
     name: 'Paris',
     location: {
@@ -52,3 +54,7 @@ export const cities = [
     }
   },
 ];
+
+export enum ApiRoutes {
+  Offers = '/offers'
+}

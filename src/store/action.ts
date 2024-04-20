@@ -4,9 +4,11 @@ import CardInfo from '../types/card-info.ts';
 
 const Action = {
   SELECT_CITY: 'SELECT_CITY',
-  FILL_OFFERS: 'FILL_OFFERS'
+  FETCH_CARDS: 'FETCH_CARDS'
 };
 
-export const selectCityAction = createAction<{city: City}>(Action.SELECT_CITY);
+export const selectCityAction = createAction<City>(Action.SELECT_CITY);
 
-export const fillOffersAction = createAction<{offers: CardInfo[]}>(Action.FILL_OFFERS);
+export const setLoadingStatus = createAction<boolean>('data/setLoadingStatus');
+
+export const fetchCardsAction = createAction<CardInfo[]>(Action.FETCH_CARDS);
