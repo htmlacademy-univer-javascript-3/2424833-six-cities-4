@@ -34,6 +34,7 @@ export default function App(props: {favorites: CardInfo[]}): JSX.Element {
                 <OfferPage
                   reviews={reviews}
                   isAuthorized
+                  offersNearby={[]}
                 />
               }
             />

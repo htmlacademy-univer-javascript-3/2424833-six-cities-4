@@ -1,7 +1,8 @@
 import City from '../types/city.ts';
 import CardInfo from '../types/card-info.ts';
 import { createReducer } from '@reduxjs/toolkit';
-import {selectCityAction, fetchCardsAction, setLoadingStatus} from './action.ts';
+import {selectCityAction} from './action.ts';
+import {fetchCardsAction} from './api-actions.ts';
 
 type State = {
   city: City;
@@ -26,10 +27,11 @@ export const reducer = createReducer(initialState, (builder) => {
     .addCase(selectCityAction, (state, action) => {
       state.city = action.payload;
     })
-    .addCase(setLoadingStatus, (state, action) => {
-      state.isLoading = action.payload;
+    .addCase(fetchCardsAction.pending, (state) => {
+      state.isLoading = true;
     })
-    .addCase(fetchCardsAction, (state, action) => {
+    .addCase(fetchCardsAction.fulfilled, (state, action) => {
+      state.isLoading = false;
       state.offers = action.payload;
     });
 });

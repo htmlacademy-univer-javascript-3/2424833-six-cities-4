@@ -1,21 +1,17 @@
 import {AxiosInstance} from 'axios';
 import {AppDispatch, State} from '../types/state.ts';
 import {createAsyncThunk} from '@reduxjs/toolkit';
-import * as actions from './action.ts';
 import {ApiRoutes} from '../consts.ts';
 import CardInfo from '../types/card-info.ts';
-import {setLoadingStatus} from './action.ts';
 
-export const fetchCardsAction = createAsyncThunk<void, undefined, {
+export const fetchCardsAction = createAsyncThunk<CardInfo[], undefined, {
   dispatch: AppDispatch;
   state: State;
   extra: AxiosInstance;
 }>(
   'data/fetchCards',
-  async (_arg, {dispatch, extra: api}) => {
-    dispatch(setLoadingStatus(true));
+  async (_arg, {extra: api}) => {
     const {data} = await api.get<CardInfo[]>(ApiRoutes.Offers);
-    dispatch(setLoadingStatus(false));
-    dispatch(actions.fetchCardsAction(data));
+    return data;
   },
 );
