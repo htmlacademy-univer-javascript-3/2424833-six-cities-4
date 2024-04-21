@@ -1,7 +1,7 @@
 import {JSX} from 'react';
 import Main from './main/main.tsx';
 import CardInfo from '../types/card-info.ts';
-import {BrowserRouter, Route, Routes} from 'react-router-dom';
+import {Route, Routes} from 'react-router-dom';
 import Login from './login/login.tsx';
 import Favorites from './favorites/favorites.tsx';
 import NotFound from './not-found/not-found.tsx';
@@ -11,12 +11,14 @@ import Layout from './layout/layout.tsx';
 import {reviews} from '../mocks/reviews.ts';
 import {useAppSelector} from '../hooks';
 import {AuthorizationStatus} from '../consts.ts';
+import HistoryRouter from './history-route/history-route.tsx';
+import browserHistory from '../browser-history.ts';
 
 export default function App(props: {favorites: CardInfo[]}): JSX.Element {
   const isAuthorized = useAppSelector((state) => state.authorizationStatus) === AuthorizationStatus.Auth;
 
   return (
-    <BrowserRouter>
+    <HistoryRouter history={browserHistory}>
       <Routes>
         <Route path={'/'} element={<Layout isAuthorized={isAuthorized}/>}>
           <Route index element={<Main />} />
@@ -44,6 +46,6 @@ export default function App(props: {favorites: CardInfo[]}): JSX.Element {
         {/*вынес для лейаута*/}
         <Route path={'login'} element={<Login />} />
       </Routes>
-    </BrowserRouter>
+    </HistoryRouter>
   );
 }
