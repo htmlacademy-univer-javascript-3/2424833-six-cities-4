@@ -1,8 +1,11 @@
 import {JSX} from 'react';
 import {Navigate} from 'react-router-dom';
 
-export default function ProtectedRoute(props: {children: JSX.Element}): JSX.Element {
-  const isAuthorized = false;
+type Props = {
+  children: JSX.Element;
+  isAuthorized: boolean;
+}
 
-  return isAuthorized ? props.children : <Navigate to={'/login'} />;
+export default function ProtectedRoute({children, isAuthorized}: Props): JSX.Element {
+  return isAuthorized ? children : <Navigate to={'/login'} />;
 }

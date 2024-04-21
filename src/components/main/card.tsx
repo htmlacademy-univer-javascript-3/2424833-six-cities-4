@@ -15,6 +15,7 @@ export default function Card({card, onListItemHover, classPrefix}: Props): JSX.E
   const handleListItemHover = (event: MouseEvent<HTMLLIElement>) => {
     event.preventDefault();
     onListItemHover(card.location);
+    // TODO: change color back to blue
   };
 
   return (

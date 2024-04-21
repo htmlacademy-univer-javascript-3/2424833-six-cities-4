@@ -5,7 +5,6 @@ import Review from '../../types/review.ts';
 import CardInfo from '../../types/card-info.ts';
 import Map from '../main/map.tsx';
 import CardsList from '../main/cards-list.tsx';
-//import {useParams} from "react-router-dom";
 
 type OfferPageProps = {
   isAuthorized: boolean;
@@ -14,7 +13,6 @@ type OfferPageProps = {
 }
 
 export default function OfferPage(props: OfferPageProps): JSX.Element {
-  //const params = useParams();
   const points = props.offersNearby.map((card) => card.location);
 
   return (
