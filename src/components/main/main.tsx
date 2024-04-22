@@ -9,6 +9,7 @@ import {cities} from '../../consts.ts';
 // TODO: fix main page scroll
 // TODO: fix slash between price and period
 export default function Main(): JSX.Element {
+  // TODO: city resets on page refresh
   const [city, allCards] = useAppSelector((state) => [state.city, state.offers]);
   const [selectedPoint, setSelectedPoint] = useState<Location | undefined>(undefined);
 

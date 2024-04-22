@@ -12,7 +12,7 @@ import {reviews} from '../mocks/reviews.ts';
 import {Provider} from 'react-redux';
 import store from '../store/store.ts';
 
-export default function App(props: {cards: CardInfo[]; favorites: CardInfo[]}): JSX.Element {
+export default function App(props: {favorites: CardInfo[]}): JSX.Element {
   return (
     <Provider store={store} >
       <BrowserRouter>
@@ -34,7 +34,7 @@ export default function App(props: {cards: CardInfo[]; favorites: CardInfo[]}): 
                 <OfferPage
                   reviews={reviews}
                   isAuthorized
-                  offersNearby={props.cards.slice(0, 3)}
+                  offersNearby={[]}
                 />
               }
             />
