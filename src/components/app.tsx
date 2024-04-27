@@ -26,7 +26,7 @@ export default function App(props: {favorites: CardInfo[]}): JSX.Element {
             path={'favorites'}
             element={
               // FIXME: HistoryAPI strange behavior on redirect
-              <ProtectedRoute isAuthorized={isAuthorized}>
+              <ProtectedRoute>
                 <Route element={<Favorites cards={props.favorites}/>} />
               </ProtectedRoute>
             }
