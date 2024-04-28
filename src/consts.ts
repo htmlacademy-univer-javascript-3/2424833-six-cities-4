@@ -55,6 +55,17 @@ export const cities: City[] = [
   },
 ];
 
+export enum AppRoute {
+  Offers = '/'
+}
+
 export enum ApiRoutes {
-  Offers = '/offers'
+  Offers = '/offers',
+  Login = '/login'
+}
+
+export enum AuthorizationStatus {
+  Auth = 'AUTH',
+  NoAuth = 'NO_AUTH',
+  Unknown = 'UNKNOWN',
 }

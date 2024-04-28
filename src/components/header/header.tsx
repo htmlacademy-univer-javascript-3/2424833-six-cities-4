@@ -1,9 +1,11 @@
 import {JSX} from 'react';
 import HeaderLogo from './header-logo.tsx';
 import {Link} from 'react-router-dom';
+import {useAppSelector} from '../../hooks';
 
-//export default function Header(props: {email: string; favoriteCount: number}): JSX.Element {
-export default function Header({favoritesCount = 3} : {favoritesCount?: number}): JSX.Element {
+export default function Header(): JSX.Element {
+  const user = useAppSelector((state) => state.user);
+
   return (
     <header className="header">
       <div className="container">
@@ -12,12 +14,13 @@ export default function Header({favoritesCount = 3} : {favoritesCount?: number})
           <nav className="header__nav">
             <ul className="header__nav-list">
               <li className="header__nav-item user">
-                {/*TODO: заметна разница во времени между выделением жирным почты и количества при наведении*/}
                 <Link className="header__nav-link header__nav-link--profile" to={'favorites'}>
                   <div className="header__avatar-wrapper user__avatar-wrapper">
+                    {/*<img src={user.avatarUrl} alt='avatar'/>*/}
                   </div>
-                  <span className="header__user-name user__name">Oliver.conner@gmail.com</span>
-                  <span className="header__favorite-count">{favoritesCount}</span>
+                  {/*TODO: email?*/}
+                  <span className="header__user-name user__name">{user!.name}</span>
+                  <span className="header__favorite-count">{3}</span>
                 </Link>
               </li>
               <li className="header__nav-item">
