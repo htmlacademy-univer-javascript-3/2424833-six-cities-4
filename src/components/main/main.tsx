@@ -5,15 +5,17 @@ import Location from '../../types/location.ts';
 import {useAppSelector} from '../../hooks';
 import Tabs from './tabs.tsx';
 import {cities} from '../../consts.ts';
+import Spinner from '../on-load/spinner.tsx';
 
 // TODO: fix main page scroll
 // TODO: fix slash between price and period
 export default function Main(): JSX.Element {
   // TODO: city resets on page refresh
-  const [city, allCards] = useAppSelector((state) => [state.city, state.offers]);
+  const [cityName, allCards, isLoading] = useAppSelector((state) =>
+    [state.city, state.offers, state.loadingStatus.isCardsLoading]);
   const [selectedPoint, setSelectedPoint] = useState<Location | undefined>(undefined);
 
-  const cards = allCards.filter((card) => card.city.name === city.name);
+  const cards = allCards.filter((card) => card.city.name === cityName);
   const points = cards.map((card) => card.location);
 
   const handleListItemHover = (listPoint: Location) => {
@@ -27,13 +29,13 @@ export default function Main(): JSX.Element {
     <div className="page page--gray page--main">
       <main className="page__main page__main--index">
         <h1 className="visually-hidden">Cities</h1>
-        <Tabs cities={cities} activeCityName={city.name}/>
+        <Tabs cities={cities} activeCityName={cityName}/>
         <div className="cities">
           <div className="cities__places-container container">
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
               <b className="places__found">
-                {cards.length} {cards.length === 1 ? 'place' : 'places'} to stay in {city.name}
+                {cards.length} {cards.length === 1 ? 'place' : 'places'} to stay in {cityName}
               </b>
               <form className="places__sorting" action="#" method="get">
                 <span className="places__sorting-caption">Sort by</span>
@@ -57,12 +59,13 @@ export default function Main(): JSX.Element {
               />
             </section>
             <div className="cities__right-section">
-              <Map
-                city={city}
-                points={points}
-                selectedPoint={selectedPoint}
-                mapClass={'cities__map map'}
-              />
+              {isLoading ? <Spinner/> :
+                <Map
+                  city={cards[0].city}
+                  points={points}
+                  selectedPoint={selectedPoint}
+                  mapClass={'cities__map map'}
+                />}
             </div>
           </div>
         </div>

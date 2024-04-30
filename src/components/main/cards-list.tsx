@@ -12,7 +12,7 @@ type Props = {
 }
 
 export default function CardsList({cards, onListItemHover, listClassNames}: Props): JSX.Element {
-  const isLoading = useAppSelector((state) => state.isLoading);
+  const isLoading = useAppSelector((state) => state.loadingStatus.isCardsLoading);
 
   const createCards = () => (
     <>

@@ -8,7 +8,6 @@ import NotFound from './not-found/not-found.tsx';
 import OfferPage from './offer/offer-page.tsx';
 import ProtectedRoute from './protected-route/protected-route.tsx';
 import Layout from './layout/layout.tsx';
-import {reviews} from '../mocks/reviews.ts';
 import {useAppSelector} from '../hooks';
 import {AuthorizationStatus} from '../consts.ts';
 import HistoryRouter from './history-route/history-route.tsx';
@@ -34,11 +33,7 @@ export default function App(props: {favorites: CardInfo[]}): JSX.Element {
           <Route
             path={'offer/:id'}
             element={
-              <OfferPage
-                reviews={reviews}
-                isAuthorized={isAuthorized}
-                offersNearby={[]}
-              />
+              <OfferPage isAuthorized={isAuthorized}/>
             }
           />
         </Route>

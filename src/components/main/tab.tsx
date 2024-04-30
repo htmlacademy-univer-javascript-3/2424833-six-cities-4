@@ -2,10 +2,9 @@ import {JSX} from 'react';
 import {Link} from 'react-router-dom';
 import {useAppDispatch} from '../../hooks';
 import {selectCityAction} from '../../store/action.ts';
-import City from '../../types/city.ts';
 
 type TabProps = {
-  city: City;
+  city: string;
   isActive: boolean;
 }
 
@@ -20,7 +19,7 @@ export default function Tab({city, isActive}: TabProps): JSX.Element {
   return (
     <li className="locations__item">
       <Link className={linkClass} to={'/'} onClick={handleClick}>
-        <span>{city.name}</span>
+        <span>{city}</span>
       </Link>
     </li>
   );

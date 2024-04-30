@@ -2,7 +2,7 @@ import {UserData} from '../../types/user-data.ts';
 import {JSX} from 'react';
 import classNames from 'classnames';
 
-export default function HostInfo({user, description}: {user: UserData, description: string}): JSX.Element {
+export default function HostInfo({user, description}: {user: UserData; description: string}): JSX.Element {
   const avatarClassNames = classNames(
     'offer__avatar-wrapper',
     user.isPro ? 'offer__avatar-wrapper--pro' : '',
