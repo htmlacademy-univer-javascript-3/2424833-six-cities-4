@@ -8,12 +8,10 @@ import NotFound from './not-found/not-found.tsx';
 import OfferPage from './offer/offer-page.tsx';
 import ProtectedRoute from './protected-route/protected-route.tsx';
 import Layout from './layout/layout.tsx';
-import {reviews} from '../mocks/reviews.ts';
 import {useAppSelector} from '../hooks';
 import {AuthorizationStatus} from '../consts.ts';
 import HistoryRouter from './history-route/history-route.tsx';
 import browserHistory from '../browser-history.ts';
-import {favorites} from '../mocks/favorites.ts';
 
 export default function App(props: {favorites: CardInfo[]}): JSX.Element {
   const isAuthorized = useAppSelector((state) => state.authorizationStatus) === AuthorizationStatus.Auth;
@@ -34,13 +32,7 @@ export default function App(props: {favorites: CardInfo[]}): JSX.Element {
           />
           <Route
             path={'offer/:id'}
-            element={
-              <OfferPage
-                reviews={reviews}
-                isAuthorized={isAuthorized}
-                offersNearby={favorites}
-              />
-            }
+            element={<OfferPage isAuthorized={isAuthorized}/>}
           />
         </Route>
         <Route path={'*'} element={<NotFound />} />

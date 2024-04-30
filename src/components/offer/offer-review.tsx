@@ -1,9 +1,9 @@
 import {JSX} from 'react';
-import Review from '../../types/review.ts';
+import {Review} from '../../types/review.ts';
+
 
 function formatDate(date: Date): string {
-  const timeFormat: Intl.DateTimeFormatOptions = { month: 'long', year: 'numeric'};
-  return new Intl.DateTimeFormat('en-US', timeFormat).format(date);
+  return date.toLocaleString('en-Us', { month: 'long', year: 'numeric' });
 }
 
 export default function OfferReview({review}: {review: Review}): JSX.Element {
@@ -29,8 +29,8 @@ export default function OfferReview({review}: {review: Review}): JSX.Element {
           </div>
         </div>
         <p className="reviews__text">{review.comment}</p>
-        <time className="reviews__time" dateTime={review.date.toISOString().split('T')[0]}>
-          {formatDate(review.date)}
+        <time className="reviews__time" dateTime={review.date}>
+          {formatDate(new Date(review.date))}
         </time>
       </div>
     </li>

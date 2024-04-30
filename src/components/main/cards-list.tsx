@@ -36,7 +36,8 @@ export default function CardsList({
   sortType = SortType.Popularity,
   sortOrder = SortOrder.Descending
 }: Props): JSX.Element {
-  const isLoading = useAppSelector((state) => state.isLoading);
+  const isLoading = useAppSelector((state) => state.loadingStatus.isCardsLoading);
+
 
   const createCards = () => (
     <>

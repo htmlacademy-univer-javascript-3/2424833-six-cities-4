@@ -1,10 +1,12 @@
 import {ChangeEventHandler, JSX} from 'react';
 
 type starInput = {
-  defaultValue: number;
+  defaultValue: string;
+  selectedValue: string;
   id: string;
   labelTitle: string;
   onChange: ChangeEventHandler<HTMLInputElement>;
+  disabled: boolean;
 }
 
 export default function StarInput(props: starInput): JSX.Element {
@@ -17,6 +19,8 @@ export default function StarInput(props: starInput): JSX.Element {
         id={props.id}
         type="radio"
         onChange={props.onChange}
+        disabled={props.disabled}
+        checked={props.selectedValue === props.defaultValue}
       />
       <label
         htmlFor={props.id}
