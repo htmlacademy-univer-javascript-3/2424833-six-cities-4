@@ -96,6 +96,7 @@ export default function OfferPage(props: OfferPageProps): JSX.Element {
               </ul>
               <div className="offer__price">
                 <b className="offer__price-value">€120</b>
+                {' '}
                 <span className="offer__price-text">&nbsp;night</span>
               </div>
               <div className="offer__inside">
@@ -156,7 +157,11 @@ export default function OfferPage(props: OfferPageProps): JSX.Element {
         <div className="container">
           <section className="near-places places">
             <h2 className="near-places__title">Other places in the neighbourhood</h2>
-            <CardsList cards={props.offersNearby} onListItemHover={() => null} listClassNames={'near-places__list places__list'} />
+            <CardsList
+              cards={props.offersNearby}
+              onListItemHover={() => null}
+              listClassNames={'near-places__list places__list'}
+            />
           </section>
         </div>
       </main>

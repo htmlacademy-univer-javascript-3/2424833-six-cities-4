@@ -10,8 +10,8 @@ type Props = {
   cards: CardInfo[];
   onListItemHover: (listPoint: Location) => void;
   listClassNames: string;
-  sortType: SortType;
-  sortOrder: SortOrder;
+  sortType?: SortType;
+  sortOrder?: SortOrder;
 }
 
 const sortCards = (cards: CardInfo[], type: SortType, order: SortOrder) => {
@@ -29,7 +29,13 @@ const sortCards = (cards: CardInfo[], type: SortType, order: SortOrder) => {
   return cards;
 };
 
-export default function CardsList({cards, onListItemHover, listClassNames, sortType, sortOrder}: Props): JSX.Element {
+export default function CardsList({
+  cards,
+  onListItemHover,
+  listClassNames,
+  sortType = SortType.Popularity,
+  sortOrder = SortOrder.Descending
+}: Props): JSX.Element {
   const isLoading = useAppSelector((state) => state.isLoading);
 
   const createCards = () => (
