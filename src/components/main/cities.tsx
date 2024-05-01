@@ -3,21 +3,20 @@ import Spinner from '../on-load/spinner.tsx';
 import Map from './map.tsx';
 import Location from '../../types/location.ts';
 import {useAppSelector} from '../../hooks';
-import {getOffers, isOffersLoading} from '../../store/app-data/selectors.ts';
+import {getCityOffers, isOffersLoading} from '../../store/app-data/selectors.ts';
 import {useCallback, useState} from 'react';
 import {useSearchParams} from 'react-router-dom';
 import {SortOrder, SortType} from '../../types/sort.ts';
 import Sort from './sort.tsx';
 
 export default function Cities({cityName}: {cityName: string}) {
-  const allCards = useAppSelector(getOffers);
+  const cards = useAppSelector(getCityOffers);
   const isLoading = useAppSelector(isOffersLoading);
   const [selectedPoint, setSelectedPoint] = useState<Location | undefined>(undefined);
   const [searchParams] = useSearchParams();
   const sortType = searchParams.get('sort') ?? SortType.Popularity;
   const sortOrder = searchParams.get('order') ?? SortOrder.Descending;
 
-  const cards = allCards.filter((card) => card.city.name === cityName);
   const points = cards.map((card) => card.location);
 
   const handleListItemHover = useCallback((point: Location) => setSelectedPoint(point), []);
