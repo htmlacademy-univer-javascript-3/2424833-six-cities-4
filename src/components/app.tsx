@@ -30,12 +30,7 @@ export default function App(props: {favorites: CardInfo[]}): JSX.Element {
               </ProtectedRoute>
             }
           />
-          <Route
-            path={'offer/:id'}
-            element={
-              <OfferPage isAuthorized={isAuthorized}/>
-            }
-          />
+          <Route path={'offer/:id'} element={<OfferPage/>} />
         </Route>
         <Route path={'*'} element={<NotFound />} />
         {/*вынес для лейаута*/}

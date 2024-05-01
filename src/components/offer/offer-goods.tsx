@@ -1,6 +1,6 @@
 import {JSX} from 'react';
 
-export default function OfferGood({goods}: {goods: string[]}): JSX.Element {
+export default function OfferGoods({goods}: {goods: string[]}): JSX.Element {
   const createGoodsList = () => (
     <ul className="offer__inside-list">
       {goods.map((item) => <li key={item} className="offer__inside-item">{item}</li>)}

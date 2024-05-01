@@ -52,7 +52,6 @@ export default function OfferReviewForm({offerId}: {offerId: string}): JSX.Eleme
   const resetForm = () => setFormData(defaultFormData);
   const unblockForm = () => setBlock(false);
 
-
   const handleFieldChange = (evt: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const {name, value} = evt.target;
     setFormData({...formData, [name]: value});

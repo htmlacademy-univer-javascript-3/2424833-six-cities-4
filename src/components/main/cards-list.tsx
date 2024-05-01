@@ -1,4 +1,4 @@
-import {JSX} from 'react';
+import {JSX, memo} from 'react';
 import CardInfo from '../../types/card-info.ts';
 import Card from './card.tsx';
 import Location from '../../types/location.ts';
@@ -12,7 +12,7 @@ type Props = {
   listClassNames: string;
 }
 
-export default function CardsList({cards, onListItemHover, listClassNames}: Props): JSX.Element {
+function CardsList({cards, onListItemHover, listClassNames}: Props): JSX.Element {
   const isLoading = useAppSelector(isOffersLoading);
 
   const createCards = () => (
@@ -29,3 +29,6 @@ export default function CardsList({cards, onListItemHover, listClassNames}: Prop
     </div>
   );
 }
+
+const MemoizedCardsList = memo(CardsList);
+export default MemoizedCardsList;
