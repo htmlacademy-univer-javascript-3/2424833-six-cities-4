@@ -2,12 +2,13 @@ import {FormEvent, JSX, useRef} from 'react';
 import LoginPageHeader from '../header/login-page-header.tsx';
 import {useAppDispatch, useAppSelector} from '../../hooks';
 import {loginAction} from '../../store/api-actions.ts';
-import {AppRoute, AuthorizationStatus} from '../../consts.ts';
+import {AppRoute} from '../../consts.ts';
 import {redirectToRoute} from '../../store/action.ts';
+import {getIsAuthorized} from '../../store/user-process/selectors.ts';
 
 export default function Login(): JSX.Element {
   const dispatch = useAppDispatch();
-  const isAuthorized = useAppSelector((state) => state.authorizationStatus) === AuthorizationStatus.Auth;
+  const isAuthorized = useAppSelector(getIsAuthorized);
   if (isAuthorized) {
     dispatch(redirectToRoute(AppRoute.Offers));
   }

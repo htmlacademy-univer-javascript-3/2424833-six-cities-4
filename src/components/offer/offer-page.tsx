@@ -10,6 +10,7 @@ import {fetchOfferAction, fetchOffersNearbyAction, fetchReviewsAction} from '../
 import Spinner from '../on-load/spinner.tsx';
 import OfferGoods from './offer-goods.tsx';
 import HostInfo from './host-info.tsx';
+import {getOffer, getOffersNearby, getReviews, isOfferPageDataLoading} from '../../store/app-data/selectors.ts';
 
 const roundRating = (value: number) => value % 1 === 0.5 ? value : Math.round(value);
 
@@ -18,13 +19,10 @@ export default function OfferPage({isAuthorized}: {isAuthorized: boolean}): JSX.
   const id = params.id!;
 
   const dispatch = useAppDispatch();
-  const offer = useAppSelector((state) => state.offer);
-  const offersNearby = useAppSelector((state) => state.offersNearby.slice(0, 3));
-  const reviews = useAppSelector((state) => state.reviews);
-  const isLoading = useAppSelector((state) =>
-    state.loadingStatus.isOfferLoading ||
-    state.loadingStatus.isReviewsLoading ||
-    state.loadingStatus.isOffersNearbyLoading);
+  const offer = useAppSelector(getOffer);
+  const offersNearby = useAppSelector(getOffersNearby);
+  const reviews = useAppSelector(getReviews);
+  const isLoading = useAppSelector(isOfferPageDataLoading);
 
   if (offer === undefined || offer.id !== id) {
     dispatch(fetchOfferAction(id));

@@ -9,12 +9,12 @@ import OfferPage from './offer/offer-page.tsx';
 import ProtectedRoute from './protected-route/protected-route.tsx';
 import Layout from './layout/layout.tsx';
 import {useAppSelector} from '../hooks';
-import {AuthorizationStatus} from '../consts.ts';
 import HistoryRouter from './history-route/history-route.tsx';
 import browserHistory from '../browser-history.ts';
+import {getIsAuthorized} from '../store/user-process/selectors.ts';
 
 export default function App(props: {favorites: CardInfo[]}): JSX.Element {
-  const isAuthorized = useAppSelector((state) => state.authorizationStatus) === AuthorizationStatus.Auth;
+  const isAuthorized = useAppSelector(getIsAuthorized);
 
   return (
     <HistoryRouter history={browserHistory}>

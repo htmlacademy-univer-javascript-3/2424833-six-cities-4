@@ -4,6 +4,7 @@ import Card from './card.tsx';
 import Location from '../../types/location.ts';
 import {useAppSelector} from '../../hooks';
 import Spinner from '../on-load/spinner.tsx';
+import {isOffersLoading} from '../../store/app-data/selectors.ts';
 
 type Props = {
   cards: CardInfo[];
@@ -12,7 +13,7 @@ type Props = {
 }
 
 export default function CardsList({cards, onListItemHover, listClassNames}: Props): JSX.Element {
-  const isLoading = useAppSelector((state) => state.loadingStatus.isCardsLoading);
+  const isLoading = useAppSelector(isOffersLoading);
 
   const createCards = () => (
     <>

@@ -2,9 +2,10 @@ import {JSX} from 'react';
 import HeaderLogo from './header-logo.tsx';
 import {Link} from 'react-router-dom';
 import {useAppSelector} from '../../hooks';
+import {getUser} from '../../store/user-process/selectors.ts';
 
 export default function Header(): JSX.Element {
-  const user = useAppSelector((state) => state.user);
+  const user = useAppSelector(getUser);
 
   return (
     <header className="header">

@@ -1,9 +1,8 @@
 import {JSX} from 'react';
 import {Navigate} from 'react-router-dom';
 import {useAppSelector} from '../../hooks';
-import {AuthorizationStatus} from '../../consts.ts';
+import {getIsAuthorized} from '../../store/user-process/selectors.ts';
 
 export default function ProtectedRoute({children}: {children: JSX.Element}): JSX.Element {
-  const isAuthorized = useAppSelector((state) => state.authorizationStatus) === AuthorizationStatus.Auth;
-  return isAuthorized ? children : <Navigate to={'/login'} />;
+  return useAppSelector(getIsAuthorized) ? children : <Navigate to={'/login'} />;
 }

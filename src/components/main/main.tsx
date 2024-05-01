@@ -6,13 +6,16 @@ import {useAppSelector} from '../../hooks';
 import Tabs from './tabs.tsx';
 import {cities} from '../../consts.ts';
 import Spinner from '../on-load/spinner.tsx';
+import {getOffers, isOffersLoading} from '../../store/app-data/selectors.ts';
+import {getCity} from '../../store/app-process/selectors.ts';
 
 // TODO: fix main page scroll
 // TODO: fix slash between price and period
 export default function Main(): JSX.Element {
   // TODO: city resets on page refresh
-  const [cityName, allCards, isLoading] = useAppSelector((state) =>
-    [state.city, state.offers, state.loadingStatus.isCardsLoading]);
+  const cityName = useAppSelector(getCity);
+  const allCards = useAppSelector(getOffers);
+  const isLoading = useAppSelector(isOffersLoading);
   const [selectedPoint, setSelectedPoint] = useState<Location | undefined>(undefined);
 
   const cards = allCards.filter((card) => card.city.name === cityName);
