@@ -13,6 +13,7 @@ import {useAppSelector} from '../hooks';
 import {AuthorizationStatus} from '../consts.ts';
 import HistoryRouter from './history-route/history-route.tsx';
 import browserHistory from '../browser-history.ts';
+import {favorites} from '../mocks/favorites.ts';
 
 export default function App(props: {favorites: CardInfo[]}): JSX.Element {
   const isAuthorized = useAppSelector((state) => state.authorizationStatus) === AuthorizationStatus.Auth;
@@ -37,7 +38,7 @@ export default function App(props: {favorites: CardInfo[]}): JSX.Element {
               <OfferPage
                 reviews={reviews}
                 isAuthorized={isAuthorized}
-                offersNearby={[]}
+                offersNearby={favorites}
               />
             }
           />
