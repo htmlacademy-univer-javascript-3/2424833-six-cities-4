@@ -15,7 +15,7 @@ export default function OfferPage(): JSX.Element {
 
   const dispatch = useAppDispatch();
   const offer = useAppSelector(getOffer);
-  const offersNearby = useAppSelector(getOffersNearby);
+  const offersNearby = useAppSelector(getOffersNearby).slice(0, 3);
   const isLoading = useAppSelector(isOfferPageDataLoading);
 
   if (offer === undefined || offer.id !== id) {
