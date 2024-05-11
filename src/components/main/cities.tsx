@@ -5,11 +5,17 @@ import Location from '../../types/location.ts';
 import {useAppSelector} from '../../hooks';
 import {getOffers, isOffersLoading} from '../../store/app-data/selectors.ts';
 import {useCallback, useState} from 'react';
+import {useSearchParams} from 'react-router-dom';
+import {SortOrder, SortType} from '../../types/sort.ts';
+import Sort from './sort.tsx';
 
 export default function Cities({cityName}: {cityName: string}) {
   const allCards = useAppSelector(getOffers);
   const isLoading = useAppSelector(isOffersLoading);
   const [selectedPoint, setSelectedPoint] = useState<Location | undefined>(undefined);
+  const [searchParams] = useSearchParams();
+  const sortType = searchParams.get('sort') ?? SortType.Popularity;
+  const sortOrder = searchParams.get('order') ?? SortOrder.Descending;
 
   const cards = allCards.filter((card) => card.city.name === cityName);
   const points = cards.map((card) => card.location);
@@ -24,25 +30,13 @@ export default function Cities({cityName}: {cityName: string}) {
           <b className="places__found">
             {cards.length} {cards.length === 1 ? 'place' : 'places'} to stay in {cityName}
           </b>
-          <form className="places__sorting" action="#" method="get">
-            <span className="places__sorting-caption">Sort by</span>
-            <span className="places__sorting-type" tabIndex={0}>
-                  Popular
-              <svg className="places__sorting-arrow" width={7} height={4}>
-                <use xlinkHref="#icon-arrow-select"/>
-              </svg>
-            </span>
-            <ul className="places__options places__options--custom places__options--opened">
-              <li className="places__option places__option--active" tabIndex={0}>Popular</li>
-              <li className="places__option" tabIndex={0}>Price: low to high</li>
-              <li className="places__option" tabIndex={0}>Price: high to low</li>
-              <li className="places__option" tabIndex={0}>Top rated first</li>
-            </ul>
-          </form>
+          <Sort/>
           <CardsList
             cards={cards}
             onListItemHover={handleListItemHover}
             listClassNames={'cities__places-list places__list tabs__content'}
+            sortType={sortType}
+            sortOrder={sortOrder}
           />
         </section>
         <div className="cities__right-section">
