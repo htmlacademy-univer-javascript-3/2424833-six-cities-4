@@ -1,11 +1,11 @@
 import CardInfo from './card-info.ts';
-import Host from './host.ts';
+import {UserData} from './user-data.ts';
 
 type Offer = CardInfo & {
   description: string;
-  bedrooms: 3;
+  bedrooms: number;
   goods: string[];
-  host: Host;
+  host: UserData;
   images: string[];
   maxAdults: number;
 }

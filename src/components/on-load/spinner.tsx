@@ -12,8 +12,8 @@ export default function Spinner(): JSX.Element {
   };
 
   return (
-    <div className='cities__spinner-wrapper' style={wrapperStyle}>
-      <div className='cities__spinner-container' style={containerStyle}>
+    <div className='spinner-wrapper' style={wrapperStyle}>
+      <div className='spinner-container' style={containerStyle}>
         <InfinitySpin
           width="200"
           color="#4481c3"

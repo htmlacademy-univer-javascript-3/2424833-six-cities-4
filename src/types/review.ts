@@ -1,13 +1,12 @@
-type Review = {
-  id: string;
-  date: Date;
-  user: {
-    name: string;
-    avatarUrl: string;
-    isPro: false;
-  };
+import {UserData} from './user-data.ts';
+
+export type PostReview = {
   comment: string;
   rating: number;
 }
 
-export default Review;
+export type Review = PostReview & {
+  id: string;
+  date: string;
+  user: UserData;
+}
