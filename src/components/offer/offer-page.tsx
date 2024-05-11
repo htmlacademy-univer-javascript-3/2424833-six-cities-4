@@ -1,13 +1,13 @@
 import {JSX} from 'react';
-import Map from '../main/map.tsx';
-import CardsList from '../main/cards-list.tsx';
-import {useAppDispatch, useAppSelector} from '../../hooks';
-import OfferGallery from './offer-gallery.tsx';
-import {useParams} from 'react-router-dom';
-import {fetchOfferAction, fetchOffersNearbyAction, fetchReviewsAction} from '../../store/api-actions.ts';
-import Spinner from '../on-load/spinner.tsx';
 import {getOffer, getOffersNearby, isOfferPageDataLoading} from '../../store/app-data/selectors.ts';
 import OfferContainer from './offer-container.tsx';
+import {useParams} from 'react-router-dom';
+import {useAppDispatch, useAppSelector} from '../../hooks';
+import {fetchOfferAction, fetchOffersNearbyAction, fetchReviewsAction} from '../../store/api-actions.ts';
+import Spinner from '../on-load/spinner.tsx';
+import OfferGallery from './offer-gallery.tsx';
+import CardsList from '../main/cards-list.tsx';
+import Map from '../main/map.tsx';
 
 export default function OfferPage(): JSX.Element {
   const params = useParams();

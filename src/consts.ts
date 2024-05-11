@@ -5,7 +5,7 @@ export const URL_MARKER_CURRENT = 'img/pin-active.svg';
 export const REVIEW_COMMENT_MIN_LENGTH = 50;
 export const REVIEW_COMMENT_MAX_LENGTH = 300;
 
-export const cities: string[] = [
+export const cities = [
   'Paris',
   'Cologne',
   'Brussels',
