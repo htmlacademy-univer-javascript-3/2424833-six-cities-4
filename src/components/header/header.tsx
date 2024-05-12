@@ -34,11 +34,9 @@ export default function Header(): JSX.Element {
               <li className="header__nav-item user">
                 <Link className="header__nav-link header__nav-link--profile" to={AppRoute.Favorites}>
                   <div className="header__avatar-wrapper user__avatar-wrapper">
-                    {/*TODO*/}
-                    {/*<img src={user.avatarUrl} alt='avatar'/>*/}
+                    <img src={user.avatarUrl} alt='avatar' style={{borderRadius: '20px'}}/>
                   </div>
-                  {/*TODO: email?*/}
-                  <span className="header__user-name user__name">{user.name}</span>
+                  <span className="header__user-name user__name">{user.email}</span>
                   <span className="header__favorite-count">{user.favoritesCount}</span>
                 </Link>
               </li>
