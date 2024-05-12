@@ -19,7 +19,7 @@ export default function Cities({cityName}: {cityName: string}) {
 
   const points = cards.map((card) => card.location);
 
-  const handleListItemHover = useCallback((point: Location) => setSelectedPoint(point), []);
+  const handleListItemHover = useCallback((point: Location | undefined) => setSelectedPoint(point), []);
 
   return (
     <div className="cities">
