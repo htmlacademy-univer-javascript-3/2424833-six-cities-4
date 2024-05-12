@@ -35,8 +35,8 @@ export default function Cities({cityName}: {cityName: string}) {
             cards={cards}
             onListItemHover={handleListItemHover}
             listClassNames={'cities__places-list places__list tabs__content'}
-            sortType={sortType}
-            sortOrder={sortOrder}
+            sortType={sortType as SortType}
+            sortOrder={sortOrder as SortOrder}
           />
         </section>
         <div className="cities__right-section">
