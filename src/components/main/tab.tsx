@@ -1,7 +1,7 @@
 import {JSX} from 'react';
 import {Link} from 'react-router-dom';
 import {useAppDispatch} from '../../hooks';
-import {selectCityAction} from '../../store/action.ts';
+import {selectCity} from '../../store/app-process/app-process.ts';
 
 type TabProps = {
   city: string;
@@ -10,7 +10,7 @@ type TabProps = {
 
 export default function Tab({city, isActive}: TabProps): JSX.Element {
   const dispatch = useAppDispatch();
-  const handleClick = () => dispatch(selectCityAction(city));
+  const handleClick = () => dispatch(selectCity(city));
 
   const linkClass = isActive
     ? 'locations__item-link tabs__item tabs__item--active'

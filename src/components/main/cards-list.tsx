@@ -1,9 +1,10 @@
-import {JSX} from 'react';
+import {JSX, memo} from 'react';
 import CardInfo from '../../types/card-info.ts';
 import Card from './card.tsx';
 import Location from '../../types/location.ts';
 import {useAppSelector} from '../../hooks';
 import Spinner from '../on-load/spinner.tsx';
+import {isOffersLoading} from '../../store/app-data/selectors.ts';
 import {SortOrder, SortType} from '../../types/sort.ts';
 
 type Props = {
@@ -29,15 +30,14 @@ const sortCards = (cards: CardInfo[], type: SortType, order: SortOrder) => {
   return cards;
 };
 
-export default function CardsList({
+function CardsList({
   cards,
   onListItemHover,
   listClassNames,
   sortType = SortType.Popularity,
   sortOrder = SortOrder.Descending
 }: Props): JSX.Element {
-  const isLoading = useAppSelector((state) => state.loadingStatus.isCardsLoading);
-
+  const isLoading = useAppSelector(isOffersLoading);
 
   const createCards = () => (
     <>
@@ -53,3 +53,6 @@ export default function CardsList({
     </div>
   );
 }
+
+const MemoizedCardsList = memo(CardsList);
+export default MemoizedCardsList;

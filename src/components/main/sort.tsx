@@ -3,7 +3,7 @@ import {SortOrder, SortType} from '../../types/sort.ts';
 import classNames from 'classnames';
 import browserHistory from '../../browser-history.ts';
 
-const createSortOptionsListItems = (selectedOptionName: string, setOptionName: (value: string) => void): JSX.Element => {
+const createSortOptionsListItems = (selectedOptionName: string, setOptionName: (value: string) => void, closeOnSelect: () => void): JSX.Element => {
   const options = [
     {name: 'Popular', type: SortType.Popularity, order: SortOrder.Descending},
     {name: 'Price: low to high', type: SortType.Price, order: SortOrder.Ascending},
@@ -23,6 +23,7 @@ const createSortOptionsListItems = (selectedOptionName: string, setOptionName: (
           onClick={() => {
             setOptionName(name);
             browserHistory.push(`?sort=${type}&order=${order}`);
+            closeOnSelect();
           }}
         >
           {name}
@@ -56,7 +57,7 @@ export default function Sort(): JSX.Element {
         'places__options--opened': isOpened
       })}
       >
-        {createSortOptionsListItems(sortName, setSortName)}
+        {createSortOptionsListItems(sortName, setSortName, handleToggleSortOptionsMenu)}
       </ul>
     </form>
   );

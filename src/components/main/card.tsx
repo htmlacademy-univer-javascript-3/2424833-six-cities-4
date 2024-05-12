@@ -1,4 +1,4 @@
-import {JSX, MouseEvent} from 'react';
+import {JSX, memo, MouseEvent} from 'react';
 import CardInfo from '../../types/card-info.ts';
 import PlaceCardInfoChildren from '../cards-common/place-card-info-children.tsx';
 import PremiumMark from '../cards-common/premium-mark.tsx';
@@ -11,7 +11,7 @@ type Props = {
   classPrefix: string;
 }
 
-export default function Card({card, onListItemHover, classPrefix}: Props): JSX.Element {
+function Card({card, onListItemHover, classPrefix}: Props): JSX.Element {
   const handleListItemHover = (event: MouseEvent<HTMLLIElement>) => {
     event.preventDefault();
     onListItemHover(card.location);
@@ -38,3 +38,6 @@ export default function Card({card, onListItemHover, classPrefix}: Props): JSX.E
     </article>
   );
 }
+
+const MemoizedCard = memo(Card);
+export default MemoizedCard;
