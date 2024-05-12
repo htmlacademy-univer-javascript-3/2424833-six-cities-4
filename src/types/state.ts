@@ -16,8 +16,10 @@ export type AppData = {
     isOfferLoading: boolean;
     isOffersNearbyLoading: boolean;
     isReviewsLoading: boolean;
+    isFavoritesLoading: boolean;
   };
   offers: CardInfo[];
+  favoriteOffers: CardInfo[];
   offer: Offer | undefined;
   offersNearby: CardInfo[];
   reviews: Review[];

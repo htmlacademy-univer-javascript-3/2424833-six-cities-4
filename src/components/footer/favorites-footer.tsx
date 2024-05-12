@@ -1,10 +1,11 @@
 import {JSX} from 'react';
 import {Link} from 'react-router-dom';
+import {AppRoute} from '../../consts.ts';
 
 export default function FavoritesFooter(): JSX.Element {
   return (
     <footer className="footer">
-      <Link className="footer__logo-link" to='/'>
+      <Link className="footer__logo-link" to={AppRoute.Offers}>
         <img
           className="footer__logo"
           src="img/logo.svg"

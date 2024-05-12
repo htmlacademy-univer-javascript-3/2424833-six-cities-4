@@ -9,7 +9,6 @@ import classNames from 'classnames';
 import MainEmpty from './main-empty.tsx';
 
 // TODO: fix main page scroll
-// TODO: fix slash between price and period
 export default function Main(): JSX.Element {
   // TODO: city resets on page refresh
   const cityName = useAppSelector(getCity);

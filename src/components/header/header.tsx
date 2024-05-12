@@ -1,11 +1,28 @@
-import {JSX} from 'react';
+import {JSX, useEffect} from 'react';
 import HeaderLogo from './header-logo.tsx';
 import {Link} from 'react-router-dom';
-import {useAppSelector} from '../../hooks';
+import {useAppDispatch, useAppSelector} from '../../hooks';
 import {getUser} from '../../store/user-process/selectors.ts';
+import {AppRoute} from '../../consts.ts';
+import HeaderUnauthorized from './header-unauthorized.tsx';
+import {fetchFavoriteOffersAction} from '../../store/api-actions.ts';
+import {logout} from '../../store/action.ts';
 
 export default function Header(): JSX.Element {
   const user = useAppSelector(getUser);
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(fetchFavoriteOffersAction());
+  });
+
+  if (!user) {
+    return <HeaderUnauthorized/>;
+  }
+
+  const onSignOutClick = () => {
+    dispatch(logout());
+  };
 
   return (
     <header className="header">
@@ -15,17 +32,18 @@ export default function Header(): JSX.Element {
           <nav className="header__nav">
             <ul className="header__nav-list">
               <li className="header__nav-item user">
-                <Link className="header__nav-link header__nav-link--profile" to={'favorites'}>
+                <Link className="header__nav-link header__nav-link--profile" to={AppRoute.Favorites}>
                   <div className="header__avatar-wrapper user__avatar-wrapper">
+                    {/*TODO*/}
                     {/*<img src={user.avatarUrl} alt='avatar'/>*/}
                   </div>
                   {/*TODO: email?*/}
-                  <span className="header__user-name user__name">{user!.name}</span>
-                  <span className="header__favorite-count">{3}</span>
+                  <span className="header__user-name user__name">{user.name}</span>
+                  <span className="header__favorite-count">{user.favoritesCount}</span>
                 </Link>
               </li>
               <li className="header__nav-item">
-                <a className="header__nav-link" href="#">
+                <a className="header__nav-link" onClick={onSignOutClick}>
                   <span className="header__signout">Sign out</span>
                 </a>
               </li>

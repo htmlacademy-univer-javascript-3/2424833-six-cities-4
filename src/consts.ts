@@ -16,13 +16,16 @@ export const cities = [
 
 export enum AppRoute {
   Offers = '/',
-  NotFound = '*'
+  NotFound = '*',
+  Login = '/login',
+  Favorites = '/favorites'
 }
 
 export enum ApiRoutes {
   Login = '/login',
   Offers = '/offers',
-  Reviews = '/comments'
+  Reviews = '/comments',
+  Favorite = '/favorite'
 }
 
 export enum AuthorizationStatus {
