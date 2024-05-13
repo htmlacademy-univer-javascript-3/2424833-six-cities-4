@@ -7,19 +7,26 @@ import Location from '../../types/location.ts';
 
 type Props = {
   card: CardInfo;
-  onListItemHover: (listPoint: Location) => void;
+  onListItemHover: (listPoint: Location | undefined) => void;
   classPrefix: string;
 }
 
 function Card({card, onListItemHover, classPrefix}: Props): JSX.Element {
-  const handleListItemHover = (event: MouseEvent<HTMLLIElement>) => {
+  const onMouseEnter = (event: MouseEvent<HTMLLIElement>) => {
     event.preventDefault();
     onListItemHover(card.location);
-    // TODO: change color back to blue
+  };
+  const onMouseLeave = (event: MouseEvent<HTMLLIElement>) => {
+    event.preventDefault();
+    onListItemHover(undefined);
   };
 
   return (
-    <article className={`${classPrefix}__card place-card`} onMouseEnter={handleListItemHover}>
+    <article
+      className={`${classPrefix}__card place-card`}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+    >
       {card.isPremium && <PremiumMark />}
       <div className={`${classPrefix}__image-wrapper place-card__image-wrapper`}>
         <Link to={`offer/${card.id}`}>

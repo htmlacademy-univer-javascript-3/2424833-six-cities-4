@@ -2,6 +2,9 @@ import {JSX} from 'react';
 import CardInfo from '../../types/card-info.ts';
 import _ from 'lodash';
 import FavoritesListItem from './favorites-list-item.tsx';
+import {useAppSelector} from '../../hooks';
+import {getFavoriteOffers, isFavoritesLoading} from '../../store/app-data/selectors.ts';
+import Spinner from '../on-load/spinner.tsx';
 
 function CreateListItems(cards: CardInfo[]) {
   const cardsGroupedByLocation = _.groupBy(cards, (card) => card.city.name);
@@ -13,9 +16,13 @@ function CreateListItems(cards: CardInfo[]) {
   );
 }
 
-export default function FavoritesList({cards}: {cards: CardInfo[]}): JSX.Element {
+export default function FavoritesList(): JSX.Element {
+  const cards = useAppSelector(getFavoriteOffers);
+  const isLoading = useAppSelector(isFavoritesLoading);
+
   return (
     <ul className="favorites__list">
+      {isLoading && <Spinner/>}
       {CreateListItems(cards)}
     </ul>
   );

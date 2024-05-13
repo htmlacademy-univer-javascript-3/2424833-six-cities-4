@@ -7,8 +7,8 @@ import {UserData} from '../types/user-data.ts';
 import {AuthData} from '../types/auth-data.ts';
 import {AuthResult} from '../types/auth-result.ts';
 import {StatusCodes} from 'http-status-codes';
-import Offer from '../types/offer.ts';
 import {Review, PostReview} from '../types/review.ts';
+import Offer from '../types/offer.ts';
 
 export const fetchCardsAction = createAsyncThunk<CardInfo[], undefined, {
   dispatch: AppDispatch;
@@ -18,6 +18,18 @@ export const fetchCardsAction = createAsyncThunk<CardInfo[], undefined, {
   'data/fetchCards',
   async (_arg, {extra: api}) => {
     const {data} = await api.get<CardInfo[]>(ApiRoutes.Offers);
+    return data;
+  },
+);
+
+export const fetchFavoriteOffersAction = createAsyncThunk<CardInfo[], undefined, {
+  dispatch: AppDispatch;
+  state: State;
+  extra: AxiosInstance;
+}>(
+  'data/fetchFavoriteOffers',
+  async (_arg, {extra: api}) => {
+    const {data} = await api.get<CardInfo[]>(ApiRoutes.Favorite);
     return data;
   },
 );
@@ -78,6 +90,27 @@ export const postReview = createAsyncThunk<Review, {
         unblockForm();
         throw error;
       }
+    },
+    );
+
+export const setOfferFavoriteStatus = createAsyncThunk<{
+  isFavorite: boolean;
+  setIsFavorite: (isFavorite: boolean) => void;
+  wasFavorite: boolean;
+    }, {
+  offerId: string;
+  newStatus: number;
+  setIsFavorite: (isFavorite: boolean) => void;
+  wasFavorite: boolean;
+}, {
+  dispatch: AppDispatch;
+  state: State;
+  extra: AxiosInstance;
+}>(
+    'data/setOfferFavoriteStatus',
+    async ({newStatus, offerId, setIsFavorite, wasFavorite}, {extra: api}) => {
+      const {data} = await api.post<Offer>(`${ApiRoutes.Favorite}/${offerId}/${newStatus}`); //TODO: 404/409
+      return {isFavorite: data.isFavorite, setIsFavorite, wasFavorite};
     },
     );
 

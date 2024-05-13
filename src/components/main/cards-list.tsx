@@ -9,7 +9,7 @@ import {SortOrder, SortType} from '../../types/sort.ts';
 
 type Props = {
   cards: CardInfo[];
-  onListItemHover: (listPoint: Location) => void;
+  onListItemHover: (listPoint: Location | undefined) => void;
   listClassNames: string;
   sortType?: SortType;
   sortOrder?: SortOrder;

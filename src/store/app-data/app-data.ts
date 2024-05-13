@@ -2,11 +2,12 @@ import {AppData} from '../../types/state.ts';
 import {NameSpace} from '../../consts.ts';
 import {createSlice} from '@reduxjs/toolkit';
 import {
-  fetchCardsAction,
+  fetchCardsAction, fetchFavoriteOffersAction,
   fetchOfferAction,
   fetchOffersNearbyAction,
   fetchReviewsAction,
-  postReview
+  postReview,
+  setOfferFavoriteStatus
 } from '../api-actions.ts';
 
 const initialState: AppData = {
@@ -14,9 +15,11 @@ const initialState: AppData = {
     isCardsLoading: false,
     isOfferLoading: false,
     isOffersNearbyLoading: false,
-    isReviewsLoading: false
+    isReviewsLoading: false,
+    isFavoritesLoading: false
   },
   offers: [],
+  favoriteOffers: [],
   offer: undefined,
   offersNearby: [],
   reviews: [],
@@ -34,6 +37,13 @@ export const appData = createSlice({
       .addCase(fetchCardsAction.fulfilled, (state, action) => {
         state.loadingStatus.isCardsLoading = false;
         state.offers = action.payload;
+      })
+      .addCase(fetchFavoriteOffersAction.pending, (state) => {
+        state.loadingStatus.isFavoritesLoading = true;
+      })
+      .addCase(fetchFavoriteOffersAction.fulfilled, (state, action) => {
+        state.loadingStatus.isFavoritesLoading = false;
+        state.favoriteOffers = action.payload;
       })
       .addCase(fetchOfferAction.pending, (state) => {
         state.loadingStatus.isOfferLoading = true;
@@ -70,6 +80,10 @@ export const appData = createSlice({
       })
       .addCase(postReview.fulfilled, (state, action) => {
         state.reviews.push(action.payload);
+      })
+      .addCase(setOfferFavoriteStatus.fulfilled, (_, action) => {
+        const {isFavorite, setIsFavorite} = action.payload;
+        setIsFavorite(isFavorite);
       });
   }
 });
