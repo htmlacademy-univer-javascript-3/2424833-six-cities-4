@@ -4,7 +4,7 @@ import OfferContainer from './offer-container.tsx';
 import {useParams} from 'react-router-dom';
 import {useAppDispatch, useAppSelector} from '../../hooks';
 import {fetchOfferAction, fetchOffersNearbyAction, fetchReviewsAction} from '../../store/api-actions.ts';
-import Spinner from '../on-load/spinner.tsx';
+import Spinner from '../spinner/spinner.tsx';
 import OfferGallery from './offer-gallery.tsx';
 import CardsList from '../main/cards-list.tsx';
 import Map from '../main/map.tsx';

@@ -16,6 +16,7 @@ export const cities = [
 
 export enum AppRoute {
   Offers = '/',
+  Offer = 'offer',
   NotFound = '*',
   Login = '/login',
   Favorites = '/favorites'

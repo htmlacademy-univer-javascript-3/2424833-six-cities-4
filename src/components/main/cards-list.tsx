@@ -3,7 +3,7 @@ import CardInfo from '../../types/card-info.ts';
 import Card from './card.tsx';
 import Location from '../../types/location.ts';
 import {useAppSelector} from '../../hooks';
-import Spinner from '../on-load/spinner.tsx';
+import Spinner from '../spinner/spinner.tsx';
 import {isOffersLoading} from '../../store/app-data/selectors.ts';
 import {SortOrder, SortType} from '../../types/sort.ts';
 
