@@ -109,7 +109,7 @@ export const setOfferFavoriteStatus = createAsyncThunk<{
 }>(
     'data/setOfferFavoriteStatus',
     async ({newStatus, offerId, setIsFavorite, wasFavorite}, {extra: api}) => {
-      const {data} = await api.post<Offer>(`${ApiRoutes.Favorite}/${offerId}/${newStatus}`); //TODO: 404/409
+      const {data} = await api.post<Offer>(`${ApiRoutes.Favorite}/${offerId}/${newStatus}`);
       return {isFavorite: data.isFavorite, setIsFavorite, wasFavorite};
     },
     );

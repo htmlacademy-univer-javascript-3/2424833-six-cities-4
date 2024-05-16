@@ -48,7 +48,6 @@ export default function Login(): JSX.Element {
               </div>
               <div className="login__input-wrapper form__input-wrapper">
                 <label className="visually-hidden">Password</label>
-                {/*// TODO: verify*/}
                 <input
                   ref={passwordRef}
                   className="login__input form__input"

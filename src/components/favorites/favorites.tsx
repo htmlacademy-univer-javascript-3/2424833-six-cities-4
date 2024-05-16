@@ -1,13 +1,14 @@
 import {JSX} from 'react';
-import FavoritesFooter from '../footer/favorites-footer.tsx';
+import FavoritesFooter from './favorites-footer.tsx';
 import FavoritesList from './favorites-list.tsx';
 import {useAppSelector} from '../../hooks';
-import {hasFavoriteOffers} from '../../store/app-data/selectors.ts';
+import {hasFavoriteOffers, isFavoritesLoading} from '../../store/app-data/selectors.ts';
 import FavoritesEmpty from './favorites-empty.tsx';
 
 export default function Favorites(): JSX.Element {
   const isEmpty = !useAppSelector(hasFavoriteOffers);
-  if (isEmpty) {
+  const isLoading = useAppSelector(isFavoritesLoading);
+  if (isEmpty && !isLoading) {
     return <FavoritesEmpty/>;
   }
 

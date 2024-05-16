@@ -4,7 +4,7 @@ import _ from 'lodash';
 import FavoritesListItem from './favorites-list-item.tsx';
 import {useAppSelector} from '../../hooks';
 import {getFavoriteOffers, isFavoritesLoading} from '../../store/app-data/selectors.ts';
-import Spinner from '../on-load/spinner.tsx';
+import Spinner from '../spinner/spinner.tsx';
 
 function CreateListItems(cards: CardInfo[]) {
   const cardsGroupedByLocation = _.groupBy(cards, (card) => card.city.name);

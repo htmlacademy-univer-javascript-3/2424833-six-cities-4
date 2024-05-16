@@ -3,13 +3,14 @@ import CardInfo from '../../types/card-info.ts';
 import PlaceCardInfoChildren from '../cards-common/place-card-info-children.tsx';
 import PremiumMark from '../cards-common/premium-mark.tsx';
 import {Link} from 'react-router-dom';
+import {AppRoute} from '../../consts.ts';
 
 export default function FavoritesCard({cardInfo}: {cardInfo: CardInfo}): JSX.Element {
   return (
     <article className="favorites__card place-card">
       {cardInfo.isPremium && <PremiumMark />}
       <div className="favorites__image-wrapper place-card__image-wrapper">
-        <Link to={`offer/${cardInfo.id}`}>
+        <Link to={`/${AppRoute.Offer}/${cardInfo.id}`}>
           <img
             className="place-card__image"
             src={cardInfo.previewImage}

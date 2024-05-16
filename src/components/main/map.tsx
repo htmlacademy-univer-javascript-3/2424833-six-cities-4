@@ -51,8 +51,6 @@ function Map(props: MapProps): JSX.Element {
           .addTo(markerLayer);
       });
 
-      //TODO map.flyTo({lat: city.location.latitude, lng: city.location.longitude}, city.location.zoom);
-
       return () => {
         map.removeLayer(markerLayer);
       };

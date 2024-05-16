@@ -2,6 +2,8 @@ import {JSX} from 'react';
 import BookmarkButton from './bookmark-button.tsx';
 import CardInfo from '../../types/card-info.ts';
 import {Link} from 'react-router-dom';
+import {AppRoute} from '../../consts.ts';
+import {capitalizeFirstLetter} from '../../utilities.ts';
 
 export default function PlaceCardInfoChildren({cardInfo}: {cardInfo: CardInfo}): JSX.Element {
   return (
@@ -22,10 +24,9 @@ export default function PlaceCardInfoChildren({cardInfo}: {cardInfo: CardInfo}):
         </div>
       </div>
       <h2 className="place-card__name">
-        <Link to={`offer/${cardInfo.id}`}>{cardInfo.title}</Link>
+        <Link to={`/${AppRoute.Offer}/${cardInfo.id}`}>{cardInfo.title}</Link>
       </h2>
-      {/*TODO: to upper*/}
-      <p className="place-card__type">{cardInfo.type}</p>
+      <p className="place-card__type">{capitalizeFirstLetter(cardInfo.type)}</p>
     </>
   );
 }
