@@ -4,6 +4,7 @@ import PlaceCardInfoChildren from '../cards-common/place-card-info-children.tsx'
 import PremiumMark from '../cards-common/premium-mark.tsx';
 import {Link} from 'react-router-dom';
 import Location from '../../types/location.ts';
+import {AppRoute} from '../../consts.ts';
 
 type Props = {
   card: CardInfo;
@@ -29,7 +30,7 @@ function Card({card, onListItemHover, classPrefix}: Props): JSX.Element {
     >
       {card.isPremium && <PremiumMark />}
       <div className={`${classPrefix}__image-wrapper place-card__image-wrapper`}>
-        <Link to={`offer/${card.id}`}>
+        <Link to={`/${AppRoute.Offer}/${card.id}`}>
           <img
             className="place-card__image"
             src={card.previewImage}

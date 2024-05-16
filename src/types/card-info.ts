@@ -2,7 +2,7 @@ import City from './city.ts';
 import Location from './location.ts';
 
 type CardInfo = {
-  id: string; // TODO: guid/uuid lib
+  id: string;
   title: string;
   price: number;
   type: string;

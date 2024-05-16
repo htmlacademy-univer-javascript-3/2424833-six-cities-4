@@ -8,6 +8,7 @@ import BookmarkButton from '../cards-common/bookmark-button.tsx';
 import {useAppSelector} from '../../hooks';
 import {getReviews} from '../../store/app-data/selectors.ts';
 import {getIsAuthorized} from '../../store/user-process/selectors.ts';
+import {capitalizeFirstLetter} from '../../utilities.ts';
 
 const roundRating = (value: number) => value % 1 === 0.5 ? value : Math.round(value);
 
@@ -33,7 +34,7 @@ export default function OfferContainer({offer}: {offer: Offer}): JSX.Element {
           <span className="offer__rating-value rating__value">{offer.rating}</span>
         </div>
         <ul className="offer__features">
-          <li className="offer__feature offer__feature--entire">{offer.type}</li>
+          <li className="offer__feature offer__feature--entire">{capitalizeFirstLetter(offer.type)}</li>
           <li className="offer__feature offer__feature--bedrooms">
             {offer.bedrooms} {offer.bedrooms === 1 ? 'Bedroom' : 'Bedrooms'}
           </li>

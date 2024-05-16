@@ -4,12 +4,12 @@ import {Route, Routes} from 'react-router-dom';
 import Login from './login/login.tsx';
 import Favorites from './favorites/favorites.tsx';
 import NotFound from './not-found/not-found.tsx';
-import OfferPage from './offer/offer-page.tsx';
 import ProtectedRoute from './protected-route/protected-route.tsx';
 import Layout from './layout/layout.tsx';
 import HistoryRouter from './history-route/history-route.tsx';
 import browserHistory from '../browser-history.ts';
 import {AppRoute} from '../consts.ts';
+import OfferPage from './offer-page/offer-page.tsx';
 
 export default function App(): JSX.Element {
   return (
@@ -26,10 +26,9 @@ export default function App(): JSX.Element {
               </ProtectedRoute>
             }
           />
-          <Route path={'offer/:id'} element={<OfferPage/>} />
+          <Route path={`${AppRoute.Offer}/:id`} element={<OfferPage />}/>
         </Route>
         <Route path={AppRoute.NotFound} element={<NotFound />} />
-        {/*вынес для лейаута*/}
         <Route path={AppRoute.Login} element={<Login />} />
       </Routes>
     </HistoryRouter>

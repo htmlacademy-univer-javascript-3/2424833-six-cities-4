@@ -1,5 +1,5 @@
 import CardsList from './cards-list.tsx';
-import Spinner from '../on-load/spinner.tsx';
+import Spinner from '../spinner/spinner.tsx';
 import Map from './map.tsx';
 import Location from '../../types/location.ts';
 import {useAppSelector} from '../../hooks';

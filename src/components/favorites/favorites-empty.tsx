@@ -1,5 +1,5 @@
 import {JSX} from 'react';
-import FavoritesFooter from '../footer/favorites-footer.tsx';
+import FavoritesFooter from './favorites-footer.tsx';
 
 export default function FavoritesEmpty(): JSX.Element {
   return (
