@@ -1,6 +1,6 @@
-import CardsList from './cards-list.tsx';
+import CardsList from '../cards-common/cards-list.tsx';
 import Spinner from '../spinner/spinner.tsx';
-import Map from './map.tsx';
+import Map from '../cards-common/map.tsx';
 import Location from '../../types/location.ts';
 import {useAppSelector} from '../../hooks';
 import {getCityOffers, isOffersLoading} from '../../store/app-data/selectors.ts';

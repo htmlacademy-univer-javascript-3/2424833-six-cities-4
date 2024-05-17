@@ -1,7 +1,7 @@
 import {JSX, memo, MouseEvent} from 'react';
 import CardInfo from '../../types/card-info.ts';
-import PlaceCardInfoChildren from '../cards-common/place-card-info-children.tsx';
-import PremiumMark from '../cards-common/premium-mark.tsx';
+import PlaceCardInfoChildren from './place-card-info-children.tsx';
+import PremiumMark from './premium-mark.tsx';
 import {Link} from 'react-router-dom';
 import Location from '../../types/location.ts';
 import {AppRoute} from '../../consts.ts';

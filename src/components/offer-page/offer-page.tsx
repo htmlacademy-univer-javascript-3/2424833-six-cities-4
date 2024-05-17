@@ -6,8 +6,8 @@ import {useAppDispatch, useAppSelector} from '../../hooks';
 import {fetchOfferAction, fetchOffersNearbyAction, fetchReviewsAction} from '../../store/api-actions.ts';
 import Spinner from '../spinner/spinner.tsx';
 import OfferGallery from './offer-gallery.tsx';
-import CardsList from '../main/cards-list.tsx';
-import Map from '../main/map.tsx';
+import CardsList from '../cards-common/cards-list.tsx';
+import Map from '../cards-common/map.tsx';
 
 export default function OfferPage(): JSX.Element {
   const params = useParams();
