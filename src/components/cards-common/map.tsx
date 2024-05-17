@@ -1,7 +1,7 @@
 import {useRef, useEffect} from 'react';
 import {Icon, Marker, layerGroup} from 'leaflet';
-import useMap from '../../hooks/use-map';
-import {URL_MARKER_DEFAULT, URL_MARKER_CURRENT} from '../../consts';
+import useMap from '../../hooks/use-map.tsx';
+import {URL_MARKER_DEFAULT, URL_MARKER_CURRENT} from '../../consts.ts';
 import 'leaflet/dist/leaflet.css';
 import Location from '../../types/location.ts';
 import City from '../../types/city.ts';
@@ -50,6 +50,8 @@ function Map(props: MapProps): JSX.Element {
           )
           .addTo(markerLayer);
       });
+
+      map.panTo({lat: city.location.latitude, lng: city.location.longitude});
 
       return () => {
         map.removeLayer(markerLayer);
